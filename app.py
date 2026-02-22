@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(page_title="IA Recopilador Académico", page_icon="🎓", layout="centered")
 
 # ============================================================================
-# IMAGEN DE FONDO DESDE INTERNET
+# FONDO + TEXTO OSCURO LEGIBLE
 # ============================================================================
 st.markdown("""
 <style>
@@ -13,24 +13,47 @@ st.markdown("""
         background-position: center;
         background-attachment: fixed;
     }
-    /* Fondo semi-transparente para que el texto sea legible */
     .block-container {
-        background-color: rgba(255, 255, 255, 0.88);
+        background-color: rgba(255, 255, 255, 0.93);
         border-radius: 15px;
         padding: 30px !important;
     }
-    /* Botones más bonitos */
+    /* FORZAR TEXTO OSCURO EN TODA LA APP */
+    .block-container p,
+    .block-container li,
+    .block-container span,
+    .block-container label,
+    .block-container div {
+        color: #1a1a1a !important;
+    }
+    h1, h2, h3, h4 {
+        color: #1a1a1a !important;
+    }
+    /* Botones */
     div.stButton > button {
         font-size: 16px !important;
         font-weight: bold !important;
         border-radius: 8px !important;
-        padding: 10px !important;
+        background-color: #78681E !important;
+        color: white !important;
+    }
+    div.stButton > button:hover {
+        background-color: #5a4e17 !important;
+    }
+    /* Input text */
+    input {
+        color: #1a1a1a !important;
+        background-color: white !important;
+    }
+    /* Info box */
+    .stAlert {
+        color: #1a1a1a !important;
     }
 </style>
 """, unsafe_allow_html=True)
 
 # ============================================================================
-# LISTA DE PREGUNTAS (igual que el original)
+# LISTA DE PREGUNTAS
 # ============================================================================
 preguntas_info = [
     {
@@ -75,9 +98,6 @@ if "paso" not in st.session_state:
 if "historial_chat" not in st.session_state:
     st.session_state.historial_chat = []
 
-# ============================================================================
-# FUNCIÓN: construir búsqueda (igual que el original)
-# ============================================================================
 def construir_idea_busqueda():
     g = st.session_state.gustos_estudiante
     partes = []
@@ -93,7 +113,7 @@ def construir_idea_busqueda():
 # ============================================================================
 st.markdown("""
     <div style='background:#361201; padding:18px; border-radius:10px; text-align:center;'>
-        <h2 style='color:white; margin:0;'>🎓 IA de Personalización de Búsquedas Académicas</h2>
+        <h2 style='color:white !important; margin:0;'>🎓 IA de Personalización de Búsquedas Académicas</h2>
     </div>
 """, unsafe_allow_html=True)
 st.markdown("---")
@@ -102,16 +122,16 @@ st.markdown("---")
 # PANTALLA INICIAL
 # ============================================================================
 if st.session_state.paso == 0:
+    st.markdown("<h3 style='color:#1a1a1a;'>¡Bienvenido al Recopilador de Preferencias Académicas con IA!</h3>", unsafe_allow_html=True)
+    st.markdown("<p style='color:#1a1a1a;'><b>¿Qué hace esta herramienta?</b></p>", unsafe_allow_html=True)
     st.markdown("""
-    ### ¡Bienvenido al Recopilador de Preferencias Académicas con IA!
-
-    **¿Qué hace esta herramienta?**
-    1. Te hace **5 preguntas** sobre tus gustos académicos
-    2. Guarda tus respuestas en un diccionario
-    3. Construye una **búsqueda personalizada** combinando tus respuestas
-    4. Abre **Google** con resultados específicos para ti
-    """)
-    st.info("Presiona el botón para comenzar.")
+    <ol style='color:#1a1a1a;'>
+        <li>Te hace <b>5 preguntas</b> sobre tus gustos académicos</li>
+        <li>Guarda tus respuestas en un diccionario</li>
+        <li>Construye una <b>búsqueda personalizada</b> combinando tus respuestas</li>
+        <li>Abre <b>Google</b> con resultados específicos para ti</li>
+    </ol>
+    """, unsafe_allow_html=True)
 
     if st.button("▶️ Iniciar Recopilación", use_container_width=True):
         st.session_state.paso = 1
@@ -127,10 +147,10 @@ elif 1 <= st.session_state.paso <= 5:
     total = len(preguntas_info)
 
     st.progress(st.session_state.paso / total)
-    st.markdown(f"**Pregunta {st.session_state.paso} de {total}**")
+    st.markdown(f"<p style='color:#1a1a1a;'><b>Pregunta {st.session_state.paso} de {total}</b></p>", unsafe_allow_html=True)
 
     st.markdown(f"""
-        <div style='background:rgba(245,245,245,0.95); border-radius:12px; padding:25px;
+        <div style='background:rgba(245,245,245,0.98); border-radius:12px; padding:25px;
         border-left: 5px solid #3498db;'>
             <h3 style='color:#2c3e50;'>{info['pregunta']}</h3>
             <p style='color:#34495e;'>{info['explicacion']}</p>
@@ -161,24 +181,24 @@ elif 1 <= st.session_state.paso <= 5:
 
     if st.session_state.historial_chat:
         st.markdown("---")
-        st.markdown("**📋 Respuestas anteriores:**")
+        st.markdown("<p style='color:#1a1a1a;'><b>📋 Respuestas anteriores:</b></p>", unsafe_allow_html=True)
         for i, item in enumerate(st.session_state.historial_chat, 1):
-            st.write(f"**{i}.** {item['pregunta']}  →  _{item['respuesta']}_")
+            st.markdown(f"<p style='color:#1a1a1a;'><b>{i}.</b> {item['pregunta']} → <i>{item['respuesta']}</i></p>", unsafe_allow_html=True)
 
 # ============================================================================
 # RESULTADO FINAL (paso 6)
 # ============================================================================
 elif st.session_state.paso == 6:
     st.success("✅ ¡Recopilación completada!")
-    st.markdown("### 📋 Resumen de tus gustos:")
+    st.markdown("<h3 style='color:#1a1a1a;'>📋 Resumen de tus gustos:</h3>", unsafe_allow_html=True)
 
     for i, (clave, valor) in enumerate(st.session_state.gustos_estudiante.items(), 1):
         nombre = clave.replace("_", " ").title()
-        st.write(f"**{i}. {nombre}:** {valor}")
+        st.markdown(f"<p style='color:#1a1a1a;'><b>{i}. {nombre}:</b> {valor}</p>", unsafe_allow_html=True)
 
     idea = construir_idea_busqueda()
     st.markdown("---")
-    st.markdown("### 🔍 Búsqueda generada automáticamente:")
+    st.markdown("<h3 style='color:#1a1a1a;'>🔍 Búsqueda generada automáticamente:</h3>", unsafe_allow_html=True)
     st.code(idea)
 
     url = f"https://www.google.com/search?q={idea.replace(' ', '+')}"
