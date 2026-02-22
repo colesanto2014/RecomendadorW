@@ -231,7 +231,7 @@ elif 1 <= st.session_state.paso <= 5:
             st.write(f"{i}. {item['pregunta']} → {item['respuesta']}")
 
 # ============================================================================
-# RESULTADO FINAL
+#  RESULTADO FINAL
 # ============================================================================
 elif st.session_state.paso == 6:
 
