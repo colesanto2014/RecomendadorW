@@ -34,7 +34,7 @@ st.markdown("""
         font-size: 16px !important;
         font-weight: bold !important;
         border-radius: 8px !important;
-        background-color: #78681E !important;
+        background-color: #FFFB01 !important;
         color: white !important;
     }
     div.stButton > button:hover {
