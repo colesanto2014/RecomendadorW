@@ -38,8 +38,9 @@ color:#1a1a1a !important;
 
 .block-container h1,
 .block-container h2,
-.block-container h3{
-color:#1a1a1a !important;
+.block-container h3,
+.block-container h4 {
+    color: #1a1a1a !important;
 }
 
 div.stButton > button{
