@@ -3,6 +3,33 @@ import streamlit as st
 st.set_page_config(page_title="IA Recopilador Académico", page_icon="🎓", layout="centered")
 
 # ============================================================================
+# IMAGEN DE FONDO DESDE INTERNET
+# ============================================================================
+st.markdown("""
+<style>
+    .stApp {
+        background-image: url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=1600");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    /* Fondo semi-transparente para que el texto sea legible */
+    .block-container {
+        background-color: rgba(255, 255, 255, 0.88);
+        border-radius: 15px;
+        padding: 30px !important;
+    }
+    /* Botones más bonitos */
+    div.stButton > button {
+        font-size: 16px !important;
+        font-weight: bold !important;
+        border-radius: 8px !important;
+        padding: 10px !important;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# ============================================================================
 # LISTA DE PREGUNTAS (igual que el original)
 # ============================================================================
 preguntas_info = [
@@ -102,11 +129,10 @@ elif 1 <= st.session_state.paso <= 5:
     st.progress(st.session_state.paso / total)
     st.markdown(f"**Pregunta {st.session_state.paso} de {total}**")
 
-    # Tarjeta de pregunta (simula la ventana emergente del original)
     st.markdown(f"""
-        <div style='background:#f5f5f5; border-radius:12px; padding:25px;
-        border-left: 5px solid #3498db; color:#2c3e50;'>
-            <h3>{info['pregunta']}</h3>
+        <div style='background:rgba(245,245,245,0.95); border-radius:12px; padding:25px;
+        border-left: 5px solid #3498db;'>
+            <h3 style='color:#2c3e50;'>{info['pregunta']}</h3>
             <p style='color:#34495e;'>{info['explicacion']}</p>
         </div>
     """, unsafe_allow_html=True)
@@ -133,7 +159,6 @@ elif 1 <= st.session_state.paso <= 5:
             st.session_state.paso = 0
             st.rerun()
 
-    # Historial de respuestas anteriores
     if st.session_state.historial_chat:
         st.markdown("---")
         st.markdown("**📋 Respuestas anteriores:**")
