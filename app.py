@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(page_title="IA Recopilador Académico", page_icon="🎓", layout="centered")
 
 # =========================================================
-# ESTILO VISUAL PROFESIONAL
+#  ESTILO VISUAL PROFESIONAL
 # =========================================================
 st.markdown("""
 <style>
