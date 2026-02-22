@@ -113,7 +113,7 @@ def construir_idea_busqueda():
 # ============================================================================
 st.markdown("""
     <div style='background:#361201; padding:18px; border-radius:10px; text-align:center;'>
-        <h2 style='color:white !important; margin:0;'>🎓 IA de Personalización de Búsquedas Académicas</h2>
+        <h2 style='color:gold !important; margin:0;'>🎓 IA de Personalización de Búsquedas Académicas</h2>
     </div>
 """, unsafe_allow_html=True)
 st.markdown("---")
