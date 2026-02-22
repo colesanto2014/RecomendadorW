@@ -119,13 +119,13 @@ st.markdown("""
 st.markdown("---")
 
 # ============================================================================
-# PANTALLA INICIAL
+#  PANTALLA INICIAL
 # ============================================================================
 if st.session_state.paso == 0:
     st.markdown("<h3 style='color:#1a1a1a;'>¡Bienvenido al Recopilador de Preferencias Académicas con IA!</h3>", unsafe_allow_html=True)
     st.markdown("<p style='color:#1a1a1a;'><b>¿Qué hace esta herramienta?</b></p>", unsafe_allow_html=True)
     st.markdown("""
-    <ol style='color:#1a1a1a;'>
+    <ol style='color:#51E4E8;'>
         <li>Te hace <b>5 preguntas</b> sobre tus gustos académicos</li>
         <li>Guarda tus respuestas en un diccionario</li>
         <li>Construye una <b>búsqueda personalizada</b> combinando tus respuestas</li>
