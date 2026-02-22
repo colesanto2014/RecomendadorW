@@ -66,22 +66,14 @@ background-color:#78681E;
 # =========================================================
 # TITULO
 # =========================================================
+# ============================================================================
+# TÍTULO
+# ============================================================================
 st.markdown("""
-<div style="
-background:linear-gradient(90deg,#361201,#6b2d05);
-padding:28px;
-border-radius:16px;
-text-align:center;
-box-shadow:0px 6px 20px rgba(0,0,0,0.4);
-">
-<h1 style="
-color:#FFD700;
-margin:0;
-letter-spacing:1px;
-text-shadow:2px 2px 6px black;
-">
+<div style='background:#361201; padding:18px; border-radius:10px; text-align:center;'>
+<h2 style='color:#FFD700 !important; margin:0; text-shadow:2px 2px 4px black;'>
 🎓 IA de Personalización de Búsquedas Académicas
-</h1>
+</h2>
 </div>
 """, unsafe_allow_html=True)
 
